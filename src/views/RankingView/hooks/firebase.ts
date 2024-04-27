@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app"
 
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 const apiKey: string | undefined = process.env.NEXT_PUBLIC_APP_API_KEY ?? ''
@@ -18,14 +18,13 @@ const firebaseConfig = {
   messagingSenderId: messagingSenderId,
   appId: appId,
   measurementId: measurementId,
-};
+}
 
 const app = initializeApp(firebaseConfig);
 
 export const messaging = getMessaging(app);
 
 export const requestForToken = () => {
-
   return getToken(messaging, { vapidKey: vapidKey })
     .then((currentToken) => {
       if (currentToken) {
@@ -36,27 +35,14 @@ export const requestForToken = () => {
     })
     .catch((err) => {
       console.log("An error occurred while retrieving token. ", err);
-    });
-};
-
-export async function requestPermission() {
-  const permission = await Notification.requestPermission();
-  if (permission === "granted") {
-    const token = await getToken(messaging, {
-      vapidKey: vapidKey,
-    });
-
-    console.log("Token generated : ", token);
-  } else if (permission === "denied") {
-    alert("You denied for the notification");
-  }
+    })
 }
 
 export const onMessageListener = () =>
   new Promise((resolve) => {
     onMessage(messaging, (payload) => {
-      console.log("payload", payload);
-      resolve(payload);
-    });
-  });
+      console.log("payload", payload)
+      resolve(payload)
+    })
+  })
 

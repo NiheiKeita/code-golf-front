@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { onMessageListener, requestPermission } from "../../hooks/firebase";
+import { onMessageListener, requestForToken } from "../../hooks/firebase";
 
 const Notification = () => {
   const [notification, setNotification] = useState({ title: "", body: "" });
@@ -9,7 +9,7 @@ const Notification = () => {
     }
   }, [notification]);
 
-  requestPermission()
+  requestForToken()
 
   onMessageListener()
   .then((payload:any) => {
