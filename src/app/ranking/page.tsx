@@ -1,9 +1,9 @@
-import { RankingView } from "@/views/RankingView";
+import { PushView } from "@/views/PushView";
 import React from "react";
 
 const CountPage = React.memo(() => {
-  return <RankingView />;
+  return <PushView />;
 });
 
-export default RankingView;
-CountPage.displayName = "RankingView";
+export default PushView;
+CountPage.displayName = "PushView";

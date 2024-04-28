@@ -1,7 +1,8 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import React from "react"
-import Notification from './components/Notification'
+const Notification = dynamic(() => import( './components/Notification'))
 
 export const RankingView = React.memo(function RankingView() {
   return (

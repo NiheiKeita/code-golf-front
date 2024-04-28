@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useEffect } from "react";
 import { onMessageListener, requestForToken } from "../../hooks/firebase";
 
@@ -9,15 +11,18 @@ const Notification = () => {
     }
   }, [notification]);
 
-  requestForToken()
+  useEffect(() => {
+    requestForToken()
 
-  onMessageListener()
-  .then((payload:any) => {
-      setNotification({ title: payload?.notification?.title, body: payload?.notification?.body });
-    })
-    .catch((err:any) => console.log("failed: ", err));
+    onMessageListener()
+    .then((payload:any) => {
+        setNotification({ title: payload?.notification?.title, body: payload?.notification?.body });
+      })
+      .catch((err:any) => console.log("failed: ", err));
 
+  }, []);
   return <div />;
 };
 
 export default Notification;
+
