@@ -1,7 +1,9 @@
 
 import { SectionFrame } from '@/components/SectionFrame'
+import { TextArea } from '@/components/TextArea'
 import { Question } from "@/types/Question"
 import React from "react"
+import { useQuestionView } from './hooks'
 
 const question: Question = {
   id: 1,
@@ -11,6 +13,7 @@ const question: Question = {
 }
 
 export const QuestionView = React.memo(function QuestionView() {
+  const { value, handleChange } = useQuestionView()
   return (
     <>
       <div>
@@ -24,7 +27,7 @@ export const QuestionView = React.memo(function QuestionView() {
           {question.exampleCode}
         </SectionFrame>
         <SectionFrame title="回答" className="mt-2">
-          <input type="text" />
+          <TextArea handleChange={handleChange} value={value} />
         </SectionFrame>
       </div>
     </>
