@@ -4,7 +4,9 @@ import { TextArea } from '@/components/TextArea'
 import { Question } from "@/types/Question"
 import React from "react"
 import { useQuestionView } from './hooks'
+import { SmallButton } from '@/components/SmallButton'
 
+//TODO:APIから取ってくるか、前の画面から撮ってくる
 const question: Question = {
   id: 1,
   title: "question1",
@@ -16,10 +18,7 @@ export const QuestionView = React.memo(function QuestionView() {
   const { value, handleChange } = useQuestionView()
   return (
     <>
-      <div>
-        戻る
-      </div>
-      <div>
+      <div className='mt-5'>
         <SectionFrame title={question.title}>
           {question.detail}
         </SectionFrame>
@@ -28,7 +27,13 @@ export const QuestionView = React.memo(function QuestionView() {
         </SectionFrame>
         <SectionFrame title="回答" className="mt-2">
           <TextArea handleChange={handleChange} value={value} />
+          <div className='mt-3'>
+            <SmallButton text="回答を送信する" href={''} variant="blue" />
+          </div>
         </SectionFrame>
+      </div>
+      <div className='mt-5'>
+        <SmallButton text="戻る" href={''} variant="black" />
       </div>
     </>
   )
