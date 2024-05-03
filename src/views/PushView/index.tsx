@@ -26,10 +26,6 @@ export const PushView = React.memo(function PushView() {
     }
     const app = initializeApp(firebaseConfig)
     const messaging = getMessaging(app)
-    onMessage(messaging, (payload) => {
-      console.log('Message received')
-      console.log('Message received. ', payload)
-    })
     getToken(messaging, { vapidKey: vapidKey }).then((currentToken) => {
       if (currentToken) {
         console.log('-----currentToken-----');
@@ -40,13 +36,17 @@ export const PushView = React.memo(function PushView() {
     }).catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
     });
-
-    const worker = self as unknown as Worker;
-    worker.addEventListener('push', function (e) {
-      console.log('push');
+    onMessage(messaging, (payload) => {
+      console.log('Message received')
+      console.log('Message received. ', payload)
     })
+
+    // const worker = self as unknown as Worker;
+    // worker.addEventListener('push', function (e) {
+    //   console.log('push');
+    // })
   }, [])
-  
+
   return (
     <>
       <div className="text-black">
