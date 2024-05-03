@@ -1,9 +1,9 @@
-import { QuestionsView } from "@/views/QuestionsView";
+import { QuestionListView } from "@/views/QuestionListView";
 import React from "react";
 
 const CountPage = React.memo(() => {
-  return <QuestionsView />;
+  return <QuestionListView />;
 });
 
 export default CountPage;
-CountPage.displayName = "QuestionsView";
+CountPage.displayName = "QuestionListView";

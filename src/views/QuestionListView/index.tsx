@@ -1,18 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { waitFor, within } from '@storybook/testing-library';
-import { QuestionsView } from '.';
+import { Question } from "@/types/Question"
+import React from "react"
+import { Card } from "./components/Card"
 
-
-const meta: Meta<typeof QuestionsView> = {
-  title: 'views/QuestionsView',
-  component: QuestionsView,
-  tags: ['autodocs'],
-}
-export default meta
-
-type Story = StoryObj<typeof meta>
-
-const questions = [
+const questions: Question[] = [
   {
     id: 1,
     title: "question1",
@@ -27,14 +17,23 @@ const questions = [
   },
 ]
 
-export const Test: Story = {
-  args: {
-    questions: questions,
-  },
-  play: async ({ canvasElement }) => {
-    const camvas = within(canvasElement)
-    await waitFor(async () => {
-      camvas.getByText("QuestionsView")
-    })
-  },
-}
+
+export const QuestionListView = React.memo(function QuestionListView() {
+
+  return (
+    <>
+      <div>
+        <p className="my-10 text-5xl font-bold">
+          問題一覧画面
+        </p>
+        <div className="w-full px-10">
+          {
+            questions.map((question, index) => {
+              return <Card key={index} link={""} body={question.title} />
+            })
+          }
+        </div>
+      </div >
+    </>
+  )
+})
