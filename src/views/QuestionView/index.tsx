@@ -1,5 +1,5 @@
 
-import { SectionFrame } from "../../components/SectionFrame"
+import { SectionFrame } from '@/components/SectionFrame'
 import { Question } from "@/types/Question"
 import React from "react"
 
