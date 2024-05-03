@@ -45,9 +45,6 @@ export const PushView = React.memo(function PushView() {
     worker.addEventListener('push', function (e) {
       console.log('push');
     })
-    worker.addEventListener('message', function (e) {
-      console.log('message');
-    })
   }, [])
   
   return (

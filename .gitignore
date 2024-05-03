@@ -42,4 +42,3 @@ next-env.d.ts
 /playwright/.cache/
 
 certificates
-public/firebase-messaging-sw.js
