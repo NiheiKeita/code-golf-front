@@ -19,7 +19,7 @@ const question =
   exampleCode: 'for ($i = 1; $i <= 100; $i++) { \n   echo match([$i % 3 === 0, $i % 5 === 0]) {\n      [true, true] => "FizzBuzz",\n      [true, false] => "Fizz",\n      [false, true] => "Buzz",\n      [false, false] => $i,\n    }, PHP_EOL;\n}',
 }
 
-export const Test: Story = {
+export const Default: Story = {
   args: {
     question: question,
   },

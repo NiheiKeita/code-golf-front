@@ -12,7 +12,7 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Test: Story = {
+export const Default: Story = {
   render(args) {
     const [value, setValue] = useState('');
     const handleChange = (value: string) => {
