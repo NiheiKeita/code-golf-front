@@ -1,10 +1,6 @@
-
 import { Question } from "@/types/Question"
 import React from "react"
-
-// type Props = {
-//   questions: Question[],
-// }
+import { Card } from "./components/Card"
 
 const questions: Question[] = [
   {
@@ -21,17 +17,23 @@ const questions: Question[] = [
   },
 ]
 
+
 export const QuestionListView = React.memo(function QuestionListView() {
-  questions
+
   return (
     <>
       <div>
-        <div>
-          <p className="text-black">
-            問題一覧画面
-          </p>
+        <p className="my-10 text-5xl font-bold">
+          問題一覧画面
+        </p>
+        <div className="w-full px-10">
+          {
+            questions.map((question, index) => {
+              return <Card key={index} link={""} body={question.title} />
+            })
+          }
         </div>
-      </div>
+      </div >
     </>
   )
 })
