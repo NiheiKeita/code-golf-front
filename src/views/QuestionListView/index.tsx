@@ -29,7 +29,7 @@ export const QuestionListView = React.memo(function QuestionListView() {
         <div className="w-full px-10">
           {
             questions.map((question, index) => {
-              return <Card key={index} link={""} body={question.title} />
+              return <Card key={index} link={`/questions/${encodeURIComponent(question.id)}`} body={question.title} />
             })
           }
         </div>

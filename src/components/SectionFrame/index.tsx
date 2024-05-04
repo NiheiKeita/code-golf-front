@@ -14,9 +14,9 @@ export const SectionFrame = React.memo<Props>(function SectionFrame({
 }) {
   return (
 
-    <div className={'rounded-lg bg-gray-50 p-4 shadow-md ' + className}>
-      <p className="mb-2 whitespace-break-spaces text-2xl font-bold">{title}</p>
-      <p className="whitespace-break-spaces text-gray-700">{children}</p>
+    <div className={'rounded-lg bg-gray-50 p-4 shadow-md text-gray-700 ' + className}>
+      <div className="mb-2 whitespace-break-spaces text-2xl font-bold">{title}</div>
+      <div className="whitespace-break-spaces text-gray-700">{children}</div>
     </div>
   )
 })

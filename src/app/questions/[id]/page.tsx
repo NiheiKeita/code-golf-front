@@ -1,8 +1,8 @@
 import { QuestionView } from "@/views/QuestionView";
 import React from "react";
 
-const QuestionSubmitPage = React.memo(() => {
-  return <QuestionView />;
+const QuestionSubmitPage = React.memo(({ params }: { params: { id: string } }) => {
+  return <QuestionView id={params.id} />;
 });
 
 export default QuestionSubmitPage;

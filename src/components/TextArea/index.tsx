@@ -19,7 +19,7 @@ export const TextArea = React.memo<Props>(function TextArea({
   }
   const calculateHeight = (value: string) => {
     const lines = value.split('\n').length
-    return Math.max(lines * 1.5, 6) + 'rem'
+    return Math.max(lines * 1.5 + 1, 6) + 'rem'
   }
   return (
     <textarea
