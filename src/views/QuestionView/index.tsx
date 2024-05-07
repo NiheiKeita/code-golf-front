@@ -46,7 +46,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
   }
   return (
     <>
-      <div className='mt-5'>
+      <div className='mt-5 '>
         <SectionFrame title={question.title}>
           {question.detail}
         </SectionFrame>

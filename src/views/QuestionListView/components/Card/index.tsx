@@ -14,7 +14,7 @@ export const Card = React.memo<Props>(function Card({
       <Link
         href={link}
       >
-        <div className="mt-5 w-full rounded-lg border border-gray-200 bg-white p-6 text-black shadow hover:bg-gray-100 dark:border-gray-700 ">
+        <div className="mt-5 w-full rounded-lg border bg-gray-200 p-6 text-gray-700 transition duration-300 hover:bg-gray-100">
           {body}
         </div>
       </Link>

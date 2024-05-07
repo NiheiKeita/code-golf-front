@@ -2,7 +2,8 @@
 
 import { Question } from "@/types/Question"
 import React from "react"
-import { SmallButton } from '@/components/SmallButton'
+import { rankings } from "./sample/ranking"
+import { RankingIcon } from "../../components/RankingIcon"
 
 type Props = {
   id: string,
@@ -21,68 +22,6 @@ const question2: Question = {
   exampleCode: 'question2の例のコード',
 }
 
-const rankings = [
-  {
-    name: "User1",
-    bytes: 1500,
-    rank: 1,
-    time: "10:30 AM"
-  },
-  {
-    name: "User2",
-    bytes: 1200,
-    rank: 2,
-    time: "11:15 AM"
-  },
-  {
-    name: "User3",
-    bytes: 1000,
-    rank: 3,
-    time: "11:45 AM"
-  },
-  {
-    name: "User4",
-    bytes: 900,
-    rank: 4,
-    time: "12:00 PM"
-  },
-  {
-    name: "User5",
-    bytes: 800,
-    rank: 5,
-    time: "12:30 PM"
-  },
-  {
-    name: "User6",
-    bytes: 700,
-    rank: 6,
-    time: "1:00 PM"
-  },
-  {
-    name: "User7",
-    bytes: 600,
-    rank: 7,
-    time: "1:30 PM"
-  },
-  {
-    name: "User8",
-    bytes: 500,
-    rank: 8,
-    time: "2:00 PM"
-  },
-  {
-    name: "User9",
-    bytes: 400,
-    rank: 9,
-    time: "2:30 PM"
-  },
-  {
-    name: "User10",
-    bytes: 300,
-    rank: 10,
-    time: "3:00 PM"
-  }
-];
 
 export const RankingView = React.memo<Props>(function RankingView({
   id,
@@ -110,37 +49,25 @@ export const RankingView = React.memo<Props>(function RankingView({
         <div className="mb-4 text-3xl  text-black">{question.title}ランキング</div>
         <div className="grid">
           <div className='grid grid-cols-6 rounded-lg bg-gray-800 text-white'>
-            <div className="col-span-1 px-4  py-2 ">ランキング</div>
-            <div className="col-span-2 px-4  py-2 ">名前</div>
-            <div className="col-span-2 px-4  py-2 ">バイト数</div>
-            <div className="col-span-1 px-4  py-2  "></div>
+            <div className="col-span-1 px-4 py-2 ">順位</div>
+            <div className="col-span-2 px-4 py-2 ">名前</div>
+            <div className="col-span-2 px-4 py-2 ">バイト数</div>
+            <div className="col-span-1 px-4 py-2  "></div>
           </div>
           {rankings.map((user, index) => {
-            const ranking = index + 1
-            const rankingIcon = () => {
-              switch (ranking) {
-                case 1:
-                  return (
-                    <div className="w-5">
-                      王
-                    </div>
-                  )
-                default:
-                  return (
-                    <div className="w-5">
-                    </div>
-                  )
-              }
-            }
+            const rank = index + 1
             return (
-              <div key={index} className={`grid grid-cols-6 rounded-lg bg-gray-800 text-black ${index % 2 === 0 ? 'bg-gray-200' : 'bg-gray-100'}`} >
-                <div className="col-span-1 px-4 py-2 text-left flex">
-                  {rankingIcon()}
-                  {ranking}
+              <div key={index} className={`grid grid-cols-6 rounded-lg text-black ${index % 2 === 0 ? 'bg-gray-200' : 'bg-gray-100'}`} >
+                <div className="col-span-1 flex p-2 text-left">
+
+                  <div className="relative flex w-8 items-center justify-center">
+                    <RankingIcon rank={rank} />
+                  </div>
+                  {rank}
                 </div>
                 <div className="col-span-2 px-4 py-2 text-left">{user.name}</div>
                 <div className="col-span-2 px-4 py-2 text-left">{user.bytes}</div>
-                <div className="col-span-1 px-4 py-2 text-right text-xs">{user.time}</div>
+                <div className="col-span-1 flex items-end justify-end px-4 py-2 text-right text-xs">{user.time}</div>
               </div>
             )
           }

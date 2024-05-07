@@ -16,11 +16,11 @@ export const SmallButton = React.memo<Props>(function SmallButton({
   const color = (() => {
     switch (variant) {
       case 'black':
-        return 'bg-gray-800 hover:bg-gray-700';
+        return 'bg-gray-800 hover:bg-gray-600';
       case 'blue':
         return 'bg-blue-600 hover:bg-blue-500';
       default:
-        return 'bg-gray-800 hover:bg-gray-700';
+        return 'bg-gray-800 hover:bg-gray-600';
     }
   })()
 
