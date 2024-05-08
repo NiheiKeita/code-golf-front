@@ -6,7 +6,7 @@ export const useGetQuestionList = () => {
     const [questions, setQuestions] = useState<Question[]>();
     const getQuestionList = useCallback(async () => {
         setIsLoading(true)
-        await fetch('http://localhost:8081/questions', {
+        await fetch('http://localhost:8081/api/questions', {
             mode: 'cors'
         })
             .then(res => res.json())
