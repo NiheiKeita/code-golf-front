@@ -1,11 +1,11 @@
 
 import React, { useEffect } from "react"
 import { Card } from "./components/Card"
-import { useGetQuestionList } from "./hooks"
-
+import { useGetQuestionListAPI } from "./api/useGetQuestionList"
 
 export const QuestionListView = React.memo(function QuestionListView() {
-  const { isLoading, getQuestionList, questions } = useGetQuestionList()
+  const { isLoading, getQuestionList, questions } = useGetQuestionListAPI()
+  // const useGetQuestionList = useGetQuestionListAPI()
 
   useEffect(() => {
     getQuestionList()

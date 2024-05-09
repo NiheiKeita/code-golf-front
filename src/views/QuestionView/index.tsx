@@ -6,6 +6,7 @@ import { Question } from "@/types/Question"
 import React from "react"
 import { useQuestionView } from './hooks'
 import { SmallButton } from '@/components/SmallButton'
+import { usePostCodeCheckAPI } from '../QuestionListView/api/usePostCodeCheck'
 
 type Props = {
   id: string,
@@ -27,7 +28,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
   id,
 }) {
   const { value, handleChange } = useQuestionView()
-  console.log(id)
+  const usePostCodeCheck = usePostCodeCheckAPI()
 
   const question = (() => {
     switch (id) {
@@ -39,6 +40,12 @@ export const QuestionView = React.memo<Props>(function QuestionView({
         return null
     }
   })()
+  const submitCode = () => {
+    const postData = {
+      "code": value,
+    }
+    usePostCodeCheck.postCodeCheck(postData)
+  }
 
   //Questionがなかったら一覧画面に返す
   if (!question) {
@@ -56,12 +63,12 @@ export const QuestionView = React.memo<Props>(function QuestionView({
         <SectionFrame title="回答" className="mt-2">
           <TextArea handleChange={handleChange} value={value} />
           <div className='mt-3'>
-            <SmallButton text="回答を送信する" href={''} variant="blue" />
+            <SmallButton text="回答を送信する" handleClick={submitCode} variant="blue" />
           </div>
         </SectionFrame>
       </div>
       <div className='m-5'>
-        <SmallButton text="戻る" href={'/questions'} variant="black" />
+        <SmallButton text="戻る" handleClick={() => console.log('/questions')} variant="black" />
       </div>
     </>
   )

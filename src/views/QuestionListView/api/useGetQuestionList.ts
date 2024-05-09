@@ -1,9 +1,9 @@
 import { Question } from "@/types/Question";
 import { useCallback, useState } from "react";
 
-export const useGetQuestionList = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [questions, setQuestions] = useState<Question[]>();
+export const useGetQuestionListAPI = () => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [questions, setQuestions] = useState<Question[]>()
     const getQuestionList = useCallback(async () => {
         setIsLoading(true)
         await fetch('http://localhost:8081/api/questions', {

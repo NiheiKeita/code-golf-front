@@ -1,17 +1,17 @@
 
-import Link from "next/link";
+
 import React from "react"
 
 type Props = {
   variant?: "black" | "blue"
   text: string,
-  href: string,
+  handleClick: () => void,
 }
 
 export const SmallButton = React.memo<Props>(function SmallButton({
   text,
-  href,
-  variant
+  variant,
+  handleClick,
 }) {
   const color = (() => {
     switch (variant) {
@@ -25,10 +25,10 @@ export const SmallButton = React.memo<Props>(function SmallButton({
   })()
 
   return (
-    <Link href={href}>
+    <div onClick={handleClick}>
       <div className={color + ' inline-block rounded-md px-4 py-2 text-white transition duration-300 focus:outline-none focus:ring focus:ring-gray-300'}>
         {text}
       </div>
-    </Link>
+    </div>
   )
 })
