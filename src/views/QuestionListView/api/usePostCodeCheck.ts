@@ -7,7 +7,6 @@ export const usePostCodeCheckAPI = () => {
 
     const postCodeCheck = useCallback(async (postData: any) => {
         setIsLoading(true)
-        console.log(postData)
         await fetch('http://localhost:8081/api/code-check', {
             method: "POST",
             headers: {
@@ -23,7 +22,6 @@ export const usePostCodeCheckAPI = () => {
             })
             .catch(() => {
                 setIsLoading(false)
-                console.log("error")
             })
     }, [])
     return { isLoading, postCodeCheck, resultData }
