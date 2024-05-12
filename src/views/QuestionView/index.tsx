@@ -25,7 +25,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
     return <LoadingView variant='blue' />
   }
   if (!question) {
-    return <LoadingView variant='blue' />
+    return <LoadingView variant='black' />
   }
   return (
     <div className='px-10'>
