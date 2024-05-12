@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 
 export const usePostCodeCheckAPI = () => {
     const [isLoading, setIsLoading] = useState(false)
-    const [resultData, setResultData] = useState<CodeCheckResult[]>()
+    const [resultData, setResultData] = useState<CodeCheckResult>()
 
     const postCodeCheck = useCallback(async (postData: any) => {
         setIsLoading(true)
@@ -17,6 +17,7 @@ export const usePostCodeCheckAPI = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setIsLoading(false)
                 setResultData(data)
             })

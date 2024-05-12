@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { SmallButton } from '.';
+import { LoadingIcon } from '.';
 
 
-const meta: Meta<typeof SmallButton> = {
-  title: 'components/SmallButton',
-  component: SmallButton,
+const meta: Meta<typeof LoadingIcon> = {
+  title: 'components/LoadingIcon',
+  component: LoadingIcon,
   tags: ['autodocs'],
 }
 export default meta
@@ -13,20 +13,16 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    variant: "blue",
-    text: "dddd",
+    // variant: "default",
   },
 }
 export const Blue: Story = {
   args: {
     variant: "blue",
-    text: "dddd",
   },
 }
 export const Gray: Story = {
   args: {
     variant: "black",
-    text: "dddd",
-    disable: true,
   },
 }

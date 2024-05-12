@@ -28,7 +28,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
   id,
 }) {
   const { value, handleChange } = useQuestionView()
-  const usePostCodeCheck = usePostCodeCheckAPI()
+  const { isLoading, postCodeCheck, resultData } = usePostCodeCheckAPI()
 
   const question = (() => {
     switch (id) {
@@ -44,7 +44,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
     const postData = {
       "code": value,
     }
-    usePostCodeCheck.postCodeCheck(postData)
+    postCodeCheck(postData)
   }
 
   //Questionがなかったら一覧画面に返す
@@ -62,8 +62,40 @@ export const QuestionView = React.memo<Props>(function QuestionView({
         </SectionFrame>
         <SectionFrame title="回答" className="mt-2">
           <TextArea handleChange={handleChange} value={value} />
+          {
+            resultData?.result === "ok" &&
+            (
+              <div className="rounded-md bg-green-200 p-4 shadow-md">
+                <p className="text-lg font-semibold text-green-800">正解！バイト数は{resultData?.byte}バイトでした！</p>
+              </div>
+
+            )
+          }
+          {
+            resultData?.result === "ng" &&
+            (
+              <div className="rounded-md bg-red-100 p-4 shadow-md">
+                <div className="mb-2 font-semibold text-red-800">出力結果が正しくありません。</div>
+                <div className="flex items-center">
+                  <div className="mr-2 text-gray-700">出力結果</div>
+                  <div className="text-gray-900">{resultData?.response}</div>
+                </div>
+              </div>
+            )
+          }
+          {
+            resultData?.result === "error" && (
+              <div className="rounded-md bg-yellow-100 p-4 shadow-md">
+                <div className="mb-2 font-semibold text-yellow-800">コードが間違っています。</div>
+                <div className="flex items-center">
+                  <div className="mr-2 text-gray-700">エラーコード</div>
+                  <div className="text-gray-900">{resultData?.error}</div>
+                </div>
+              </div>
+            )
+          }
           <div className='mt-3'>
-            <SmallButton text="回答を送信する" handleClick={submitCode} variant="blue" />
+            <SmallButton text="回答を送信する" handleClick={submitCode} variant="blue" disable={isLoading} />
           </div>
         </SectionFrame>
       </div>
