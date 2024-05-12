@@ -4,6 +4,7 @@ import { SectionFrame } from '@/components/SectionFrame'
 import { TextArea } from '@/components/TextArea'
 import React, { useEffect } from "react"
 import { useQuestionView } from './hooks'
+import { LoadingView } from '@/components/LoadingView'
 import { SmallButton } from '@/components/SmallButton'
 
 type Props = {
@@ -20,10 +21,10 @@ export const QuestionView = React.memo<Props>(function QuestionView({
 
   //Questionがなかったら一覧画面に返す
   if (isLoading) {
-    return <div className='text-black'>Loading</div>
+    return <LoadingView variant='blue' />
   }
   if (!question) {
-    return <div className='text-black'>Loading</div>
+    return <LoadingView variant='blue' />
   }
   return (
     <>

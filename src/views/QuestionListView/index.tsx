@@ -2,7 +2,8 @@
 
 import React, { useEffect } from "react"
 import { Card } from "./components/Card"
-import { useGetQuestionListAPI } from "./api/useGetQuestionList"
+import { useGetQuestionListAPI } from "@/api/useGetQuestionList"
+import { LoadingIcon } from "@/components/LoadingIcon"
 
 export const QuestionListView = React.memo(function QuestionListView() {
   const { isLoading, getQuestionList, questions } = useGetQuestionListAPI()
@@ -16,7 +17,7 @@ export const QuestionListView = React.memo(function QuestionListView() {
         <p className="my-10 text-5xl font-bold">
           問題一覧画面
         </p>
-        {isLoading && <>ローディング</>}
+        {isLoading && <div className="flex size-full min-h-40 items-center justify-center"><LoadingIcon variant='blue' /></div>}
         <div className="w-full px-10">
           {
             questions?.map((question, index) => {

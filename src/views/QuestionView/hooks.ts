@@ -1,8 +1,8 @@
 
 import { useState } from "react";
-import { usePostCodeCheckAPI } from "../QuestionListView/api/usePostCodeCheck";
+import { usePostCodeCheckAPI } from "@/api/usePostCodeCheck";
 import { useRouter } from "next/navigation";
-import { useGetQuestionAPI } from "../QuestionListView/api/useGetQuestionAPI";
+import { useGetQuestionAPI } from "@/api/useGetQuestionAPI";
 
 export const useQuestionView = () => {
     const usePostCodeCheck = usePostCodeCheckAPI()

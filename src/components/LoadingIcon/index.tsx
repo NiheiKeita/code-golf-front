@@ -3,7 +3,7 @@
 import React from "react"
 
 type Props = {
-  variant?: "black" | "blue"
+  variant?: "black" | "blue" | "default"
 }
 
 export const LoadingIcon = React.memo<Props>(function LoadingIcon({
