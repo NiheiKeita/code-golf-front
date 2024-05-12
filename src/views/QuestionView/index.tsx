@@ -6,6 +6,7 @@ import React, { useEffect } from "react"
 import { useQuestionView } from './hooks'
 import { LoadingView } from '@/components/LoadingView'
 import { SmallButton } from '@/components/SmallButton'
+import { Title } from '@/components/Title'
 
 type Props = {
   id: string,
@@ -27,8 +28,9 @@ export const QuestionView = React.memo<Props>(function QuestionView({
     return <LoadingView variant='blue' />
   }
   return (
-    <>
-      <div className='mt-5 '>
+    <div className='px-10'>
+      <Title>問題</Title>
+      <div className='mt-5'>
         <SectionFrame title={question.title}>
           {question.detail}
         </SectionFrame>
@@ -78,6 +80,6 @@ export const QuestionView = React.memo<Props>(function QuestionView({
       <div className='m-5'>
         <SmallButton text="戻る" handleClick={() => transition('/questions')} variant="black" />
       </div>
-    </>
+    </div>
   )
 })
