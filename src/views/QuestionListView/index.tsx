@@ -1,3 +1,4 @@
+"use client"
 
 import React, { useEffect } from "react"
 import { Card } from "./components/Card"
@@ -5,14 +6,13 @@ import { useGetQuestionListAPI } from "./api/useGetQuestionList"
 
 export const QuestionListView = React.memo(function QuestionListView() {
   const { isLoading, getQuestionList, questions } = useGetQuestionListAPI()
-  // const useGetQuestionList = useGetQuestionListAPI()
 
   useEffect(() => {
     getQuestionList()
   }, [getQuestionList])
   return (
     <>
-      <div className="">
+      <div className="text-black">
         <p className="my-10 text-5xl font-bold">
           問題一覧画面
         </p>
