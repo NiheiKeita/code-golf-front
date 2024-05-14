@@ -14,9 +14,9 @@ type Story = StoryObj<typeof meta>
 
 export const Test: Story = {
   play: async ({ canvasElement }) => {
-    const camvas = within(canvasElement)
+    const canvas = within(canvasElement)
     await waitFor(async () => {
-      camvas.getByText("QuestionListView")
+      canvas.getByText("QuestionListView")
     })
   },
 }

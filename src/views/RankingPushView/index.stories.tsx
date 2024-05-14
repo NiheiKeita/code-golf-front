@@ -17,9 +17,9 @@ export const Test: Story = {
     id: "ddd",
   },
   play: async ({ canvasElement }) => {
-    const camvas = within(canvasElement)
+    const canvas = within(canvasElement)
     await waitFor(async () => {
-      camvas.getByText("RankingPushView")
+      canvas.getByText("RankingPushView")
     })
   },
 }

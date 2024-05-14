@@ -18,9 +18,9 @@ export const Default: Story = {
     body: "ddd",
   },
   play: async ({ canvasElement }) => {
-    const camvas = within(canvasElement)
+    const canvas = within(canvasElement)
     await waitFor(async () => {
-      camvas.getByText("Card")
+      canvas.getByText("Card")
     })
   },
 }

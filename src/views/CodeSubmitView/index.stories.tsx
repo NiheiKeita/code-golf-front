@@ -17,14 +17,14 @@ export const Test: Story = {
     id: "ddd",
   },
   play: async ({ canvasElement }) => {
-    const camvas = within(canvasElement)
+    const canvas = within(canvasElement)
     await waitFor(async () => {
-      camvas.getByText("カレンダー")
+      canvas.getByText("カレンダー")
     })
-    // await expect(camvas.queryByTestId('text')).toBeTruthy()
-    // await expect(camvas.queryByTestId('text-no')).toBeFalsy()
-    // await userEvent.type(await camvas.getByTestId('input'), 'input');
-    // await fireEvent.click(camvas.getByTestId('buttonddd'))
+    // await expect(canvas.queryByTestId('text')).toBeTruthy()
+    // await expect(canvas.queryByTestId('text-no')).toBeFalsy()
+    // await userEvent.type(await canvas.getByTestId('input'), 'input');
+    // await fireEvent.click(canvas.getByTestId('buttonddd'))
     // await waitFor(() => expect(args.handleClick).toHaveBeenCalled())
   },
 }
