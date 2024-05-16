@@ -14,11 +14,14 @@ type Props = {
 export const QuestionView = React.memo<Props>(function QuestionView({
   id,
 }) {
-  const { value, handleChange, submitCode, transition, question, getQuestion, isLoading, usePostCodeCheck } = useQuestionView()
+  const { value, handleChange, submitCode, transition, question, getQuestion, isLoading, postUser, usePostCodeCheck, userName, setUserName, user, handleNameChange } = useQuestionView()
   useEffect(() => {
     getQuestion(id)
   }, [getQuestion, id])
-
+  useEffect(() => {
+    postUser()
+    setUserName(user?.name ?? '')
+  }, [postUser, setUserName, user?.name])
 
   //Questionがなかったら一覧画面に返す
   if (isLoading) {
@@ -35,8 +38,6 @@ export const QuestionView = React.memo<Props>(function QuestionView({
           {question.detail}
         </SectionFrame>
         <SectionFrame title="実装例" className="mt-2">
-
-          {/* {question.exampleCode.replace(/\\n/g, '\n')} */}
           {question.exampleCode}
         </SectionFrame>
         <SectionFrame title="回答" className="mt-2">
@@ -72,6 +73,10 @@ export const QuestionView = React.memo<Props>(function QuestionView({
               </div>
             )
           }
+          <div className='mt-3 flex'>
+            <div>名前：</div>
+            <input value={userName ?? ''} onChange={(e) => handleNameChange(e.target.value)} />
+          </div>
           <div className='mt-3'>
             <SmallButton text="回答を送信する" handleClick={submitCode} variant="blue" disable={usePostCodeCheck.isLoading} />
           </div>
