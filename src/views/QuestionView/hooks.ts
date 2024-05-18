@@ -5,20 +5,20 @@ import { useRouter } from "next/navigation";
 import { useGetQuestionAPI } from "@/api/useGetQuestionAPI";
 import { usePostUserAPI } from "@/api/usePostUserAPI";
 import { usePutUserAPI } from "@/api/usePutUserAPI";
+import { useLocalStorageUser } from "@/localStorage/useUser";
 
 export const useQuestionView = () => {
     const usePostCodeCheck = usePostCodeCheckAPI()
     const { isLoading, getQuestion, question } = useGetQuestionAPI()
     const { postUser, user } = usePostUserAPI()
     const { putUser } = usePutUserAPI()
-    const [value, setValue] = useState('');
-    const [userName, setUserName] = useState<string>('');
+    const [value, setValue] = useState('')
+    const [userName, setUserName] = useState<string>('')
+    const { getLocalStorageUser } = useLocalStorageUser()
     const handleChange = (changeValue: string) => {
         setValue(changeValue)
     }
     const submitCode = () => {
-        console.log("submitCode ")
-        console.log(userName)
         updateOrCreateUser(userName)
         const postData = {
             "code": value,
@@ -31,14 +31,13 @@ export const useQuestionView = () => {
         router.push(url)
     }
     const updateOrCreateUser = useCallback((name: string) => {
-        const userId = localStorage.getItem("userId");
-        const userName = localStorage.getItem("userName") ?? '';
-        if (userId && userName != name) {
+        const user = getLocalStorageUser()
+        if (user && user.userName != name) {
             putUser(name)
         } else {
             postUser(name)
         }
-    }, [postUser, putUser])
+    }, [getLocalStorageUser, postUser, putUser])
     const handleNameChange = useCallback((name: string) => {
         setUserName(name)
     }, [setUserName])

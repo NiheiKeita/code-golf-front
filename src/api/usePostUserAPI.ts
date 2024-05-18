@@ -1,5 +1,8 @@
 
-import { useCallback, useState } from "react";
+import { LocalStorageUser } from "@/localStorage/types"
+import { useLocalStorageUser } from "@/localStorage/useUser"
+import { useCallback, useState } from "react"
+const apiURL: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL ?? ''
 
 type User = {
     name: string,
@@ -9,22 +12,21 @@ type User = {
 export const usePostUserAPI = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [user, setUser] = useState<User>()
+    const { getLocalStorageUser, setLocalStorageUser } = useLocalStorageUser()
 
     const postUser = useCallback(async (name?: string) => {
-        const userName = localStorage.getItem("userName") ?? '';
-        const userId = localStorage.getItem("userId");
-        if (userId) {
+        const user = getLocalStorageUser()
+        if (user) {
             setUser({
-                name: userName,
-                id: userId,
+                name: user.userName,
+                id: user.userId,
             })
             return
         }
-        if (!name) {
-            return
-        }
+        if (!name) return
+
         setIsLoading(true)
-        await fetch('http://localhost:8081/api/users', {
+        await fetch(apiURL + '/api/users', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -35,8 +37,10 @@ export const usePostUserAPI = () => {
             .then(res => res.json())
             .then(data => {
                 setIsLoading(false)
-                localStorage.setItem("userName", data.name);
-                localStorage.setItem("userId", data.id);
+                setLocalStorageUser({
+                    userId: data.id,
+                    userName: data.name,
+                } as LocalStorageUser)
                 setUser({
                     name: data.name,
                     id: data.id,
@@ -46,5 +50,6 @@ export const usePostUserAPI = () => {
                 setIsLoading(false)
             })
     }, [])
+
     return { isLoading, postUser, user }
 }

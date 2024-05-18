@@ -14,7 +14,22 @@ type Props = {
 export const QuestionView = React.memo<Props>(function QuestionView({
   id,
 }) {
-  const { value, handleChange, submitCode, transition, question, getQuestion, isLoading, postUser, usePostCodeCheck, userName, setUserName, user, handleNameChange } = useQuestionView()
+  const {
+    value,
+    handleChange,
+    submitCode,
+    transition,
+    question,
+    getQuestion,
+    isLoading,
+    postUser,
+    usePostCodeCheck,
+    userName,
+    setUserName,
+    user,
+    handleNameChange
+  } = useQuestionView()
+
   useEffect(() => {
     getQuestion(id)
   }, [getQuestion, id])

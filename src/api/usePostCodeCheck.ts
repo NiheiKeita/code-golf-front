@@ -1,5 +1,6 @@
-import { CodeCheckResult } from "@/types/CodeCheckResult";
-import { useCallback, useState } from "react";
+import { CodeCheckResult } from "@/types/CodeCheckResult"
+import { useCallback, useState } from "react"
+const apiURL: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL ?? ''
 
 export const usePostCodeCheckAPI = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -7,7 +8,7 @@ export const usePostCodeCheckAPI = () => {
 
     const postCodeCheck = useCallback(async (postData: any) => {
         setIsLoading(true)
-        await fetch('http://localhost:8081/api/code-check', {
+        await fetch(apiURL + '/api/code-check', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -25,5 +26,6 @@ export const usePostCodeCheckAPI = () => {
                 setIsLoading(false)
             })
     }, [])
+
     return { isLoading, postCodeCheck, resultData }
 }

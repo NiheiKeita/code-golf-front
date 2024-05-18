@@ -1,6 +1,7 @@
 
-import { Question } from "@/types/Question";
-import { useCallback, useState } from "react";
+import { Question } from "@/types/Question"
+import { useCallback, useState } from "react"
+const apiURL: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL ?? ''
 
 export const useGetQuestionAPI = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -8,7 +9,7 @@ export const useGetQuestionAPI = () => {
 
     const getQuestion = useCallback(async (questionID: string) => {
         setIsLoading(true)
-        await fetch('http://localhost:8081/api/questions/' + questionID, {
+        await fetch(apiURL + '/api/questions/' + questionID, {
             method: "Get",
             headers: {
                 "Content-Type": "application/json",
@@ -26,5 +27,6 @@ export const useGetQuestionAPI = () => {
                 setIsLoading(false)
             })
     }, [])
+
     return { isLoading, getQuestion, question }
 }

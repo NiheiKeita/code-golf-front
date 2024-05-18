@@ -1,5 +1,8 @@
 
-import { useCallback, useState } from "react";
+import { LocalStorageUser } from "@/localStorage/types"
+import { useLocalStorageUser } from "@/localStorage/useUser"
+import { useCallback, useState } from "react"
+const apiURL: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL ?? ''
 
 type User = {
     name: string,
@@ -9,29 +12,29 @@ type User = {
 export const usePutUserAPI = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [user, setUser] = useState<User>()
+    const { getLocalStorageUser, setLocalStorageUser } = useLocalStorageUser()
 
     const putUser = useCallback(async (name?: string) => {
-        if (!name) {
-            return
-        }
-        const userId = localStorage.getItem("userId")
-        if (!userId) {
-            return
-        }
+        if (!name) return
+        const user = getLocalStorageUser()
+        if (!user) return
+
         setIsLoading(true)
-        await fetch('http://localhost:8081/api/users', {
+        await fetch(apiURL + '/api/users', {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
             mode: 'cors',
-            body: JSON.stringify({ "user_id": 10, "name": name }),
+            body: JSON.stringify({ "user_id": user.userId, "name": name }),
         })
             .then(res => res.json())
             .then(data => {
                 setIsLoading(false)
-                localStorage.setItem("userName", data.name);
-                localStorage.setItem("userId", data.id);
+                setLocalStorageUser({
+                    userId: data.id,
+                    userName: data.name,
+                } as LocalStorageUser)
                 setUser({
                     name: data.name,
                     id: data.id,
@@ -41,5 +44,6 @@ export const usePutUserAPI = () => {
                 setIsLoading(false)
             })
     }, [])
+
     return { isLoading, putUser, user }
 }
