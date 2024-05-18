@@ -14,7 +14,7 @@ export const QuestionListView = React.memo(function QuestionListView() {
   }, [getQuestionList])
   return (
     <div className="px-10 text-black">
-      <Title>問題一覧画面</Title>
+      <Title>コードゴルフ一覧</Title>
       {isLoading && <div className="flex size-full min-h-40 items-center justify-center"><LoadingIcon variant='blue' /></div>}
       <div className="w-full">
         {

@@ -35,6 +35,7 @@ export const RankingView = React.memo<Props>(function RankingView({
       getQuestion(id)
     }, 10000);
   }, [getQuestion, id])
+
   const question = (() => {
     switch (id) {
       case "1":

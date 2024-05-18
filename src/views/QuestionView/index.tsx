@@ -46,8 +46,8 @@ export const QuestionView = React.memo<Props>(function QuestionView({
     return <LoadingView variant='black' />
   }
   return (
-    <div className='px-10'>
-      <Title>問題</Title>
+    <div className='px-10 '>
+      <Title>コードゴルフ</Title>
       <div className='mt-5'>
         <SectionFrame title={question.title}>
           {question.detail}
