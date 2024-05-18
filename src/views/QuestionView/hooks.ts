@@ -18,11 +18,14 @@ export const useQuestionView = () => {
     const handleChange = (changeValue: string) => {
         setValue(changeValue)
     }
-    const submitCode = () => {
+    const submitCode = (questionID: string) => {
         updateOrCreateUser(userName)
+        if (!user) return
+        console.log(questionID)
         const postData = {
             "code": value,
-            "id": user?.id,
+            "id": user.id,
+            "question_id": questionID,
         }
         usePostCodeCheck.postCodeCheck(postData)
     }

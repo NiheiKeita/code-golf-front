@@ -1,9 +1,11 @@
 "use client"
 
 import { Question } from "@/types/Question"
-import React from "react"
+import React, { useEffect } from "react"
 import { rankings } from "./sample/ranking"
 import { RankingIcon } from "../../components/RankingIcon"
+import { useGetRankingAPI } from "@/api/useGetRankingAPI"
+import { format } from 'date-fns'
 
 type Props = {
   id: string,
@@ -26,7 +28,10 @@ const question2: Question = {
 export const RankingView = React.memo<Props>(function RankingView({
   id,
 }) {
-
+  const { isLoading, getQuestion, ranking } = useGetRankingAPI()
+  useEffect(() => {
+    getQuestion(id)
+  }, [getQuestion, id])
   const question = (() => {
     switch (id) {
       case "1":
@@ -54,7 +59,7 @@ export const RankingView = React.memo<Props>(function RankingView({
             <div className="col-span-2 px-4 py-2 ">バイト数</div>
             <div className="col-span-1 px-4 py-2  "></div>
           </div>
-          {rankings.map((user, index) => {
+          {ranking?.map((user, index) => {
             const rank = index + 1
             return (
               <div key={index} className={`grid grid-cols-6 rounded-lg text-black ${index % 2 === 0 ? 'bg-gray-200' : 'bg-gray-100'}`} >
@@ -65,9 +70,9 @@ export const RankingView = React.memo<Props>(function RankingView({
                   </div>
                   {rank}
                 </div>
-                <div className="col-span-2 px-4 py-2 text-left">{user.name}</div>
-                <div className="col-span-2 px-4 py-2 text-left">{user.bytes}</div>
-                <div className="col-span-1 flex items-end justify-end px-4 py-2 text-right text-xs">{user.time}</div>
+                <div className="col-span-2 px-4 py-2 text-left">{user.user_name}</div>
+                <div className="col-span-2 px-4 py-2 text-left">{user.code_byte}</div>
+                <div className="col-span-1 flex items-end justify-end px-4 py-2 text-right text-xs">{format(new Date(user.created_at), 'MM/dd  HH:mm')}</div>
               </div>
             )
           }

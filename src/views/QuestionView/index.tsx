@@ -93,7 +93,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
             <input value={userName ?? ''} onChange={(e) => handleNameChange(e.target.value)} />
           </div>
           <div className='mt-3'>
-            <SmallButton text="回答を送信する" handleClick={submitCode} variant="blue" disable={usePostCodeCheck.isLoading} />
+            <SmallButton text="回答を送信する" handleClick={() => submitCode(id)} variant="blue" disable={usePostCodeCheck.isLoading} />
           </div>
         </SectionFrame>
       </div>
