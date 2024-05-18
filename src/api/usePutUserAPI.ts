@@ -43,7 +43,7 @@ export const usePutUserAPI = () => {
             .catch(() => {
                 setIsLoading(false)
             })
-    }, [])
+    }, [getLocalStorageUser, setLocalStorageUser])
 
     return { isLoading, putUser, user }
 }

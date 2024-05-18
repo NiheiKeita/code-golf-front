@@ -49,7 +49,7 @@ export const usePostUserAPI = () => {
             .catch(() => {
                 setIsLoading(false)
             })
-    }, [])
+    }, [getLocalStorageUser, setLocalStorageUser])
 
     return { isLoading, postUser, user }
 }
