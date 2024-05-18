@@ -25,7 +25,6 @@ export const useGetRankingAPI = () => {
             .then(data => {
                 setIsLoading(false)
                 setRanking(data?.codes)
-                console.log(data?.codes)
             })
             .catch(() => {
                 setIsLoading(false)

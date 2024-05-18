@@ -2,10 +2,10 @@
 
 import { Question } from "@/types/Question"
 import React, { useEffect } from "react"
-import { rankings } from "./sample/ranking"
 import { RankingIcon } from "../../components/RankingIcon"
 import { useGetRankingAPI } from "@/api/useGetRankingAPI"
 import { format } from 'date-fns'
+import { Loading } from "./components/Loading"
 
 type Props = {
   id: string,
@@ -31,6 +31,9 @@ export const RankingView = React.memo<Props>(function RankingView({
   const { isLoading, getQuestion, ranking } = useGetRankingAPI()
   useEffect(() => {
     getQuestion(id)
+    setInterval(() => {
+      getQuestion(id)
+    }, 10000);
   }, [getQuestion, id])
   const question = (() => {
     switch (id) {
@@ -78,6 +81,7 @@ export const RankingView = React.memo<Props>(function RankingView({
           }
           )}
         </div>
+        {isLoading && <Loading />}
       </div >
     </>
   )
