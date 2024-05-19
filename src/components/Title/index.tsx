@@ -10,8 +10,6 @@ export const Title = React.memo<Props>(function Title({
   children,
 }) {
   return (
-    <p className="my-10 text-5xl font-bold text-black">
-      {children}
-    </p>
+    <p className="mb-6 text-3xl font-bold">{children}</p>
   )
 })
