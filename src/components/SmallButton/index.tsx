@@ -31,7 +31,7 @@ export const SmallButton = React.memo<Props>(function SmallButton({
       <button
         disabled={disable}
         onClick={handleClick}
-        className={`${color} inline-block rounded-lg px-8 py-2 font-semibold text-white shadow-md transition duration-300 hover:scale-105`}
+        className={`${color} inline-block rounded-lg px-8 py-2 font-semibold text-gray-200 shadow-md transition duration-300 hover:scale-105`}
       >
         {text}
       </button>
@@ -41,11 +41,5 @@ export const SmallButton = React.memo<Props>(function SmallButton({
         </div>
       )}
     </div>
-    // <div className="flex">
-    //   <button disabled={disable} onClick={handleClick} className={color + ' cursor-pointer inline-block rounded-md px-4 py-2 text-white transition duration-300 focus:outline-none focus:ring focus:ring-gray-300'}>
-    //     {text}
-    //   </button>
-    //   {disable && (<div className="ml-2 flex items-center justify-center"><LoadingIcon variant={variant} /></div>)}
-    // </div>
   )
 })

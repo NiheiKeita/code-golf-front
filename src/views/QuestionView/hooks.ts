@@ -13,12 +13,18 @@ export const useQuestionView = () => {
     const { postUser, user } = usePostUserAPI()
     const { putUser } = usePutUserAPI()
     const [value, setValue] = useState('')
+    const [userNameError, setUserNameError] = useState('')
     const [userName, setUserName] = useState<string>('')
     const { getLocalStorageUser } = useLocalStorageUser()
     const handleChange = (changeValue: string) => {
         setValue(changeValue)
     }
     const submitCode = (questionID: string) => {
+        if (!userName) {
+            setUserNameError('名前を入れてください')
+            return
+        }
+        setUserNameError('')
         updateOrCreateUser(userName)
         if (!user) return
         console.log(questionID)
@@ -58,6 +64,7 @@ export const useQuestionView = () => {
         setUserName,
         userName,
         user,
-        handleNameChange
+        handleNameChange,
+        userNameError
     }
 }

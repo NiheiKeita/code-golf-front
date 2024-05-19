@@ -22,15 +22,8 @@ export const TextArea = React.memo<Props>(function TextArea({
     return Math.max(lines * 1.5 + 1, 6) + 'rem'
   }
   return (
-    // <textarea
-    //   className="h-auto min-h-24 w-full rounded-md border px-4 py-2 focus:border-blue-300 focus:outline-none focus:ring"
-    //   value={value}
-    //   placeholder={placeholder}
-    //   onChange={doChange}
-    //   style={{ minHeight: calculateHeight(value) }}
-    // />
     <textarea
-      className="h-auto min-h-24 w-full rounded-md border-2 border-gray-500 bg-gray-600 px-4 py-2 text-white placeholder:text-gray-400 focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+      className="h-auto min-h-24 w-full rounded-md border-2 border-gray-500 bg-gray-600 px-4 py-2 text-gray-200 placeholder:text-gray-400 focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
       value={value}
       placeholder={placeholder}
       onChange={doChange}

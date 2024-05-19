@@ -11,8 +11,8 @@ export const Card = React.memo<Props>(function Card({
 }) {
   return (
     <Link href={link}>
-      <div className="rounded-lg bg-gray-100 bg-opacity-20 p-4 shadow-md transition duration-300 hover:scale-105">
-        <p className="block text-white">{body}</p>
+      <div className="rounded-lg bg-gray-600 p-4 shadow-md transition duration-300 hover:scale-105">
+        <p className="block text-gray-200">{body}</p>
       </div>
     </Link>
   )
