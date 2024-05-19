@@ -5,8 +5,8 @@ import React from "react"
 
 export const HomeView = React.memo(function HomeView() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <div className="max-w-xl rounded-lg bg-gray-700  p-10 text-center shadow-lg backdrop-blur-md">
+    <div className="flex min-h-screen flex-col items-center justify-center p-4">
+      <div className="max-w-3xl rounded-lg bg-gray-700 p-10 text-center shadow-lg backdrop-blur-md">
         <h1 className="mb-6 text-4xl font-bold">コードゴルフへようこそ</h1>
         <p className="mb-8 text-lg">
           コードゴルフとは、可能な限り短いコードで与えられた問題を解決することを目指すプログラミング競技です。<br />

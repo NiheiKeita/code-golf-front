@@ -44,7 +44,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
     return <LoadingView variant='blue' />
   }
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-10">
+    <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <div className="w-full max-w-3xl rounded-lg bg-gray-700 p-10 shadow-lg backdrop-blur-md">
         <Title>コードゴルフ</Title>
         <div className="mt-5">
@@ -84,7 +84,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
               <input
                 value={userName ?? ''}
                 onChange={(e) => handleNameChange(e.target.value)}
-                className="rounded-md border-2 border-gray-500 bg-gray-600 px-4 py-2 text-gray-200 placeholder:text-gray-400 focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                className="min-w-20 rounded-md border-2 border-gray-500 bg-gray-600 px-4 py-2 text-gray-200 placeholder:text-gray-400 focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
               />
               {userNameError && <div className="ml-2 mt-1 rounded-md bg-red-500 p-2 text-sm text-red-100 ">{userNameError}</div>}
             </div>
