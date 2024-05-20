@@ -17,7 +17,7 @@ export const QuestionListView = React.memo(function QuestionListView() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <div className="w-full max-w-3xl rounded-lg bg-gray-700 p-10 shadow-lg backdrop-blur-md">
-        <Title>コードゴルフ一覧</Title>
+        <Title>ゴルフコース一覧</Title>
         {isLoading && <div className="flex size-full min-h-40 items-center justify-center"><LoadingIcon variant='blue' /></div>}
         <div className="grid w-full gap-1">
           {

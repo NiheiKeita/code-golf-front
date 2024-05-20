@@ -14,7 +14,7 @@ export const HomeView = React.memo(function HomeView() {
         </p>
         <Link href="/questions">
           <p className="inline-block rounded-lg bg-blue-600 px-8 py-4 font-semibold  shadow-md transition duration-300 hover:scale-105 hover:bg-blue-700">
-            コードゴルフ一覧に行く
+            ゴルフコース一覧に行く
           </p>
         </Link>
       </div>

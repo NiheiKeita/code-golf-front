@@ -64,9 +64,9 @@ export const QuestionView = React.memo<Props>(function QuestionView({
             {usePostCodeCheck.resultData?.result === "ng" && (
               <div className="rounded-md bg-red-100 p-4 shadow-md">
                 <div className="mb-2 font-semibold text-red-800">出力結果が正しくありません。</div>
-                <div className="flex items-center">
-                  <div className="mr-2 text-gray-700">出力結果</div>
-                  <div className="text-gray-900">{usePostCodeCheck.resultData?.response}</div>
+                <div className="items-center">
+                  <div className="mr-2 font-semibold text-gray-700">出力結果</div>
+                  <div className="mt-2 text-gray-900">{usePostCodeCheck.resultData?.response}</div>
                 </div>
               </div>
             )}
