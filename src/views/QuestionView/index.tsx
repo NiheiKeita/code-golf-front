@@ -52,7 +52,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
             {question.detail}
           </SectionFrame>
           <SectionFrame title="実装例" className="mt-2">
-            {question.exampleCode}
+            {question.example_code}
           </SectionFrame>
           <SectionFrame title="回答" className="mt-2">
             <TextArea handleChange={handleChange} value={value} />

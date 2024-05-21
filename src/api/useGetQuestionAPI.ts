@@ -19,11 +19,12 @@ export const useGetQuestionAPI = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                data.exampleCode = data?.exampleCode.replace(/\\n/g, '\n')
+                data.exampleCode = data?.question.example_code.replace(/\\n/g, '\n')
                 setIsLoading(false)
-                setQuestion(data)
+                setQuestion(data.question)
             })
-            .catch(() => {
+            .catch((e) => {
+                console.log(e)
                 setIsLoading(false)
             })
     }, [])

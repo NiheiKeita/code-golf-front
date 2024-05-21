@@ -11,16 +11,16 @@ export const useGetQuestionListAPI = () => {
             mode: 'cors'
         })
             .then(res => res.json())
-            .then(questions => {
+            .then(data => {
                 setIsLoading(false)
-                questions.map((question: any) => {
+                data.questions.map((question: any) => {
                     const id = question.id
                     const title = question.title
                     const detail = question.detail
                     const exampleCode = question.exampleCode
                     return { id, title, detail, exampleCode }
                 })
-                setQuestions(questions)
+                setQuestions(data.questions)
             }).catch(() => {
                 setIsLoading(false)
             })

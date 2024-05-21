@@ -1,51 +1,29 @@
 "use client"
 
-import { Question } from "@/types/Question"
 import React, { useEffect } from "react"
 import { RankingIcon } from "../../components/RankingIcon"
 import { useGetRankingAPI } from "@/api/useGetRankingAPI"
 import { format } from 'date-fns'
 import { Loading } from "./components/Loading"
+import { useGetQuestionAPI } from "@/api/useGetQuestionAPI"
 
 type Props = {
   id: string,
 }
-//TODO:APIから取ってくるか、前の画面から撮ってくる
-const question1: Question = {
-  id: 1,
-  title: "question1",
-  detail: "いわゆる「FizzBuzz」を実装してください。 1から100までの数字について、その数が3の倍数なら「Fizz」、5の倍数なら「Buzz」、15の倍数なら「FizzBuzz」、それ以外ならその数そのものを出力してください。それぞれの出力は改行で区切ってください。",
-  exampleCode: 'for ($i = 1; $i <= 100; $i++) { \n   echo match([$i % 3 === 0, $i % 5 === 0]) {\n      [true, true] => "FizzBuzz",\n      [true, false] => "Fizz",\n      [false, true] => "Buzz",\n      [false, false] => $i,\n    }, PHP_EOL;\n}',
-}
-const question2: Question = {
-  id: 2,
-  title: "question2",
-  detail: "RFC 4648 で定義された Base32 エンコーディングを実装してください。 標準入力から与えられる各行に対し、Base32 エンコードをおこなった文字列を標準出力へ改行区切りで出力してください。 なお、アルファベットの出力には大文字を用いてください。",
-  exampleCode: 'question2の例のコード',
-}
-
-
 export const RankingView = React.memo<Props>(function RankingView({
   id,
 }) {
-  const { isLoading, getQuestion, ranking } = useGetRankingAPI()
+  const { getQuestion, question } = useGetQuestionAPI()
+  const { isLoading, getQuestionRanking, ranking } = useGetRankingAPI()
+  useEffect(() => {
+    getQuestionRanking(id)
+    setInterval(() => {
+      getQuestionRanking(id)
+    }, 10000);
+  }, [id, getQuestionRanking])
   useEffect(() => {
     getQuestion(id)
-    setInterval(() => {
-      getQuestion(id)
-    }, 10000);
   }, [getQuestion, id])
-
-  const question = (() => {
-    switch (id) {
-      case "1":
-        return question1
-      case "2":
-        return question2
-      default:
-        return null
-    }
-  })()
 
   //Questionがなかったら一覧画面に返す
   if (!question) {

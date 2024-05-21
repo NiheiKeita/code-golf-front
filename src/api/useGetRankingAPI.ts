@@ -12,7 +12,7 @@ export const useGetRankingAPI = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [ranking, setRanking] = useState<RankingLine[]>()
 
-    const getQuestion = useCallback(async (questionID: string) => {
+    const getQuestionRanking = useCallback(async (questionID: string) => {
         setIsLoading(true)
         await fetch(apiURL + '/api/questions/' + questionID + '/ranking', {
             method: "Get",
@@ -31,5 +31,5 @@ export const useGetRankingAPI = () => {
             })
     }, [])
 
-    return { isLoading, getQuestion, ranking }
+    return { isLoading, getQuestionRanking, ranking }
 }
