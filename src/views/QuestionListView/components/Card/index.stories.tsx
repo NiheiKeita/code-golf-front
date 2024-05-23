@@ -2,7 +2,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { waitFor, within } from '@storybook/testing-library';
 import { Card } from '.';
 
-
 const meta: Meta<typeof Card> = {
   title: 'components/Card',
   component: Card,

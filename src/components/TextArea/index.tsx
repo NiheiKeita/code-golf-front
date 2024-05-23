@@ -13,7 +13,6 @@ export const TextArea = React.memo<Props>(function TextArea({
   placeholder,
   handleChange,
 }) {
-
   const doChange = (event: any) => {
     handleChange(event.target.value);
   }

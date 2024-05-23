@@ -6,15 +6,13 @@ const Notification = dynamic(() => import('./components/Notification'))
 
 export const RankingPushView = React.memo(function RankingPushView() {
   return (
-    <>
+    <div>
       <div>
-        <div>
-          <p className="text-black">
-            らんきんぐ画面
-          </p>
-        </div>
-        <Notification />
+        <p className="text-black">
+          らんきんぐ画面
+        </p>
       </div>
-    </>
+      <Notification />
+    </div>
   )
 })
