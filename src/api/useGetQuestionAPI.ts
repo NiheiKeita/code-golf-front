@@ -19,7 +19,7 @@ export const useGetQuestionAPI = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                data.exampleCode = data?.question.example_code.replace(/\\n/g, '\n')
+                data.question.example_code = data?.question.example_code.replace(/\\n/g, '\n')
                 setIsLoading(false)
                 setQuestion(data.question)
             })
