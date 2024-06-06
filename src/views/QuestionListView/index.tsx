@@ -1,19 +1,19 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React from "react"
 import { Card } from "./components/Card"
-import { useGetQuestionListAPI } from "@/api/useGetQuestionList"
 import { LoadingIcon } from "@/components/LoadingIcon"
 import { Title } from "@/components/Title"
 import { SmallButton } from "@/components/SmallButton"
-import { useRouter } from "next/navigation"
+import { useQuestionView } from "./hooks"
 
 export const QuestionListView = React.memo(function QuestionListView() {
-  const { isLoading, getQuestionList, questions } = useGetQuestionListAPI()
-  const router = useRouter()
-  useEffect(() => {
-    getQuestionList()
-  }, [getQuestionList])
+  const {
+    router,
+    isLoading,
+    questions,
+  } = useQuestionView()
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <div className="w-full max-w-3xl rounded-lg bg-gray-700 p-10 shadow-lg backdrop-blur-md">

@@ -1,5 +1,5 @@
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { usePostCodeCheckAPI } from "@/api/usePostCodeCheck";
 import { useRouter } from "next/navigation";
 import { useGetQuestionAPI } from "@/api/useGetQuestionAPI";
@@ -7,7 +7,7 @@ import { usePostUserAPI } from "@/api/usePostUserAPI";
 import { usePutUserAPI } from "@/api/usePutUserAPI";
 import { useLocalStorageUser } from "@/localStorage/useUser";
 
-export const useQuestionView = () => {
+export const useQuestionView = (id: string) => {
     const usePostCodeCheck = usePostCodeCheckAPI()
     const { isLoading, getQuestion, question } = useGetQuestionAPI()
     const { postUser, user } = usePostUserAPI()
@@ -52,19 +52,23 @@ export const useQuestionView = () => {
         setUserName(name)
     }, [setUserName])
 
+    useEffect(() => {
+        getQuestion(id)
+    }, [getQuestion, id])
+    useEffect(() => {
+        postUser()
+        setUserName(user?.name ?? '')
+    }, [postUser, setUserName, user?.name])
+
     return {
         value,
         handleChange,
         submitCode,
         transition,
         question,
-        getQuestion,
         isLoading,
         usePostCodeCheck,
-        postUser,
-        setUserName,
         userName,
-        user,
         handleNameChange,
         userNameError
     }

@@ -2,7 +2,7 @@
 
 import { SectionFrame } from '@/components/SectionFrame'
 import { TextArea } from '@/components/TextArea'
-import React, { useEffect } from "react"
+import React from "react"
 import { useQuestionView } from './hooks'
 import { LoadingView } from '@/components/LoadingView'
 import { SmallButton } from '@/components/SmallButton'
@@ -20,24 +20,13 @@ export const QuestionView = React.memo<Props>(function QuestionView({
     submitCode,
     transition,
     question,
-    getQuestion,
     isLoading,
-    postUser,
     usePostCodeCheck,
     userName,
-    setUserName,
-    user,
     handleNameChange,
     userNameError
-  } = useQuestionView()
+  } = useQuestionView(id)
 
-  useEffect(() => {
-    getQuestion(id)
-  }, [getQuestion, id])
-  useEffect(() => {
-    postUser()
-    setUserName(user?.name ?? '')
-  }, [postUser, setUserName, user?.name])
 
   //Questionがなかったら一覧画面に返す
   if (isLoading || !question) {
@@ -46,7 +35,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <div className="w-full max-w-3xl rounded-lg bg-gray-700 p-10 shadow-lg backdrop-blur-md">
-        <Title>>コードを綺麗にしよう！！</Title>
+        <Title>コードを綺麗にしよう！！</Title>
         <div className="mt-5">
           <SectionFrame title={question.title}>
             {question.detail}
