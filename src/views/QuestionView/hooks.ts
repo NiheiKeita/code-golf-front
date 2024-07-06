@@ -31,7 +31,7 @@ export const useQuestionView = (id: string) => {
         console.log(questionID)
         const postData = {
             "code": value,
-            "id": user.id,
+            "user_id": user.id,
             "question_id": questionID,
         }
         usePostCodeCheck.postCodeCheck(postData)

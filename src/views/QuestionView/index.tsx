@@ -35,7 +35,7 @@ export const QuestionView = React.memo<Props>(function QuestionView({
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <div className="w-full max-w-3xl rounded-lg bg-gray-700 p-10 shadow-lg backdrop-blur-md">
-        <Title>コードを綺麗にしよう！！</Title>
+        <Title>コードを短くしよう！</Title>
         <div className="mt-5">
           <SectionFrame title={question.title}>
             {question.detail}

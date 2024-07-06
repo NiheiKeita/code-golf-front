@@ -3,7 +3,7 @@ import { useCallback, useState } from "react"
 const apiURL: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL ?? ''
 
 type PostData = {
-    id: string,
+    user_id: string,
     code: string,
     question_id: string,
 }
