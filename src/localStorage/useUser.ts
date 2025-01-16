@@ -3,14 +3,14 @@ import { LocalStorageUser } from "./types";
 
 export const useLocalStorageUser = () => {
     const getLocalStorageUser = useCallback((): LocalStorageUser | null => {
-        const user = localStorage.getItem("user")
+        const user = localStorage.getItem("newUser")
         if (!user) return null
 
-        return JSON.parse(localStorage.getItem("user") ?? '')
+        return JSON.parse(localStorage.getItem("newUser") ?? '')
     }, [])
 
     const setLocalStorageUser = useCallback((user: LocalStorageUser) => {
-        localStorage.setItem("user", JSON.stringify(user))
+        localStorage.setItem("newUser", JSON.stringify(user))
 
         return getLocalStorageUser()
     }, [getLocalStorageUser])
